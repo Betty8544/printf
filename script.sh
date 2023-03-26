@@ -1,6 +1,6 @@
 #!/bin/bash
 
-program started.........
+echo "program started........."
 git pull
 
 NEW_PATH=(`pwd`)
