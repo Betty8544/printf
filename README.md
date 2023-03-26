@@ -1,152 +1,173 @@
-Resources
+_printf()
+The printf project is a collaboration between Tolulope Fakunle and Bamidele Adefolaju, students of Software Engineering at ALX.
 
-Read or watch:
+This function named "_printf()" imitates the actual "printf()" command located in the stdio.h library of C programming Language. It contains some of the basic features and functions found in the manual 3 of "printf".
 
-Secrets of printf
-Group Projects concept page (Don’t forget to read this)
-Flowcharts concept page
-man or help:
+_printf() is a function that performs formatted output conversion and print data. Its prototype is the following:
 
-printf (3)
-Requirements
-General
-Allowed editors: vi, vim, emacs
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-All your files should end with a new line
-A README.md file, at the root of the folder of the project is mandatory
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-You are not allowed to use global variables
-No more than 5 functions per file
-In the following examples, the main.c files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own main.c files at compilation. Our main.c files might be different from the one shown in the examples
-The prototypes of all your functions should be included in your header file called main.h
-Don’t forget to push your header file
-All your header files should be include guarded
-Note that we will not provide the _putchar function for this project
-GitHub
-There should be one project repository per group. The other members do not fork or clone the project to ensure only one of the team has the repository in their github account otherwise you risk scoring 0%
+  int _printf(const char *format, ...) 
+Where format contains the string that is printed.
 
-More Info
-Authorized functions and macros
-write (man 2 write)
-malloc (man 3 malloc)
-free (man 3 free)
-va_start (man 3 va_start)
-va_end (man 3 va_end)
-va_copy (man 3 va_copy)
-va_arg (man 3 va_arg)
-Compilation
-Your code will be compiled this way:
-$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c
-As a consequence, be careful not to push any c file containing a main function in the root directory of your project (you could have a test folder containing all your tests files including main functions)
-Our main files will include your main header file (main.h): #include main.h
-You might want to look at the gcc flag -Wno-format when testing with your _printf and the standard printf. Example of test file that you could use:
-alex@ubuntu:~/c/printf$ cat main.c 
-#include <limits.h>
-#include <stdio.h>
-#include "main.h"
+_printf() is a variadic function, it can receives n arguments that replace by n tags written inside the string.
 
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-    int len;
-    int len2;
-    unsigned int ui;
-    void *addr;
+The format tags prototype is the following:
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
-    return (0);
-}
-alex@ubuntu:~/c/printf$ gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
-alex@ubuntu:~/c/printf$ ./printf
-Let's try to printf a simple sentence.
-Let's try to printf a simple sentence.
-Length:[39, 39]
-Length:[39, 39]
-Negative:[-762534]
-Negative:[-762534]
-Unsigned:[2147484671]
-Unsigned:[2147484671]
-Unsigned octal:[20000001777]
-Unsigned octal:[20000001777]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Character:[H]
-Character:[H]
-String:[I am a string !]
-String:[I am a string !]
-Address:[0x7ffe637541f0]
-Address:[0x7ffe637541f0]
-Percent:[%]
-Percent:[%]
-Len:[12]
-Len:[12]
-Unknown:[%r]
-Unknown:[%r]
-alex@ubuntu:~/c/printf$
-We strongly encourage you to work all together on a set of tests
-If the task does not specify what to do with an edge case, do the same as printf
-Copyright - Plagiarism
-You are tasked to come up with solutions for the tasks below yourself to meet with the above learning objectives.
-You will not be able to meet the objectives of this or any following project by copying and pasting someone else’s work.
-You are not allowed to publish any content of this project.
-Any form of plagiarism is strictly forbidden and will result in removal from the program.
-Tasks
-0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life
-mandatory
-Write a function that produces output according to a format.
+%[flags][length]specifier
+If the program runs successfully, the return value is the amount of chars printed.
 
-Prototype: int _printf(const char *format, ...);
-Returns: the number of characters printed (excluding the null byte used to end output to strings)
-write output to stdout, the standard output stream
-format is a character string. The format string is composed of zero or more directives. See man 3 printf for more detail. You need to handle the following conversion specifiers:
-c
-s
-%
-You don’t have to reproduce the buffer handling of the C library printf function
-You don’t have to handle the flag characters
-You don’t have to handle field width
-You don’t have to handle precision
-You don’t have to handle the length modifiers
-Repo:
+File Functions
+_printf.c
+Own Printf Function That Performs Formatted Output Conversion And Print Data.
 
-GitHub repository: printf
-   
-1. Education is when you read the fine print. Experience is what you get if you don't
-mandatory
-Handle the following conversion specifiers:
+holberton.h
+Header File Where All Prototypes Are Saved.
 
-d
-i
-You don’t have to handle the flag characters
-You don’t have to handle field width
-You don’t have to handle precision
-You don’t have to handle the length modifiers
+get_print_func.c
+Pointer To A Function That Selects The Correct Function To Perform The Operation.
+
+print_buf.c
+Function That Prints The Buffer.
+
+handl_buf.c
+Function That Concatenates The Buffer Characters.
+
+print_chr.c
+Function That Writes The Character C To Stdout.
+
+/* Indetifier : %c */
+
+print_str.c
+Function That Writes The String To Stdout.
+
+/* Indetifier : %s */
+
+print_int.c
+Function That Prints An Integer.
+
+/* Indetifier : %i or %d */
+
+print_bnr.c
+Function That Prints Decimal In Binary.
+
+/* Indetifier : %b */
+
+print_oct.c
+Function That Prints Decimal In Octal.
+
+/* Indetifier : %o */
+
+print_hex.c
+Function That Prints Decimal In Hexadecimal.
+
+/* Indetifier : %x */
+
+print_upx.c
+Function That Prints Decimal In Uppercase Hexadecimal.
+
+/* Indetifier : %X */
+
+print_usr.c
+Function That Prints A String And Values Of Non-Printed Chars.
+
+/* Indetifier : %S */
+
+print_unt.c
+Function That Prints An Unsigned Integer.
+
+/* Indetifier : %u */
+
+print_rev.c
+Function That Writes The String To Stdout In Reverse.
+
+/* Indetifier : %r */
+
+print_rot.c
+Function That Writes The String To Stdout In Rot13.
+
+/* Indetifier : %R */
+
+print_add.c
+Function That Prints The Address Of An Input Variable.
+
+/* Indetifier : %p */
+
+print_long_oct.c
+Function That Prints Long Decimal Number In Octal.
+
+/* Indetifier : %lo */
+
+print_long_hex.c
+Function That Prints Long Decimal Number In Hexadecimal.
+
+/* Indetifier : %lx */
+
+print_long_int.c
+Function That Prints A Long Integer.
+
+/* Indetifier : %li */
+
+print_long_upx.c
+Function That Prints A Long Decimal In Uppercase Hexadecimal.
+
+/* Indetifier : %lX */
+
+print_long_unt.c
+Function That Prints A Long Unsigned Integer.
+
+/* Indetifier : %lu */
+
+print_short_oct.c
+Function That Prints Short Decimal Number In Octal.
+
+/* Indetifier : %ho */
+
+print_short_hex.c
+Function That Prints Short Decimal Number In Hexadecimal.
+
+/* Indetifier : %hx */
+
+print_short_int.c
+Function That Prints A Short Integer.
+
+/* Indetifier : %hi */
+
+print_short_upx.c
+Function That Prints A Short Decimal In Uppercase Hexadecimal.
+
+/* Indetifier : %hX */
+
+print_short_unt.c
+Function That Prints A Short Unsigned Integer.
+
+/* Indetifier : %hu */
+
+print_num_hex.c
+Function That Print A Number In Hexadecimal Begining With 0 And x.
+
+/* Indetifier : %#x */
+
+print_num_oct.c
+Function That Prints A Number In Octal Begining With 0 And o.
+
+/* Indetifier : %#o */
+
+print_num_upx.c
+Function That Prints A Number In Uppercase Hexadecimal.
+
+/* Indetifier : %#X */
+
+print_plus_int.c
+Function That Prints An Integer With Plus Symbol.
+
+/* Indetifier : %+i */
+
+print_space_int.c
+Function That Prints An Integer Begining With 0 And u.
+
+/* Indetifier : % i */
+
+ev_print_func.c
+Function That Returns The Amount Of Indetifiers.
+
+Authors
+Bethelhem Mesfin and Barnabas Abuye
