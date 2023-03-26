@@ -1,16 +1,14 @@
 #!/bin/bash
 
-program started.........
+.........program started.........
 git pull
 
 NEW_PATH=(`pwd`)
 
-for file in $NEW_PATH/*
+for file in $NEW_PATH/*.c
 do
 	git pull
 	git add $file
-	echo "Input message for $file : "
-	read MSG
-	git commit -m "$MSG"
-	echo "$file - is pushed with a message $MSG\n"
+	git commit -m "Update"
+	echo "$file is pushed"
 done
